@@ -12,14 +12,13 @@ public class Video
     [Display(Name = "Título")]
     [Required(ErrorMessage = "O Título é obrigatório")]
     [StringLength(100, ErrorMessage = "O Título deve possuir no máximo 100 caracteres")]
-    public string Title { get; set; }
+    public string Name { get; set; }
 
     [Display(Name = "Descriçao")]
     [Required(ErrorMessage = "A Descrição é obrigatória")]
     [StringLength(8000, ErrorMessage = "A Descrição deve possuir no máximo 5000 caracteres")]
     public string Description { get; set; }
 
-    [Column(TypeName = "Data")]
     [Display(Name = "Data de publicação")]
     [Required(ErrorMessage = "a Data é obrigatório")]
     public DateTime UploadDate  { get; set; }
@@ -30,13 +29,19 @@ public class Video
 
     [StringLength(200)]
     [Display(Name = "Foto")]
-    public string Image { get; set; }
+    public string Thumbnail { get; set; }
 
     [NotMapped]
     [Display(Name = "Duração")]
     public string HourDuration { get {
         return TimeSpan.FromMinutes(Duration) .ToString(@"%h'h 'mm'min'");
     }}
+
+    [StringLength(200)]
+    [Display(Name = "Arquivo de video")]
+    public string VideoFile { get; set; }
+
+
 
     public ICollection<VideoTag> Tags { get; set; }
 }

@@ -69,7 +69,7 @@ public class AppDbContext : IdentityDbContext, IAppDbContext, IAppDbContext1
         });
         #endregion
 
-        #region Many To Many - MovieGenre
+        #region Many To Many - VideoGenre
         // Definição de Chave Primária Composta
         builder.Entity<VideoTag>().HasKey(
             mg => new { mg.VideoId, mg.TagId }
