@@ -1,21 +1,26 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GalloTube.Models;
+using GalloTube.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GalloTube.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly AppDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, AppDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var movies = _context.Videos.Include(m => m.Tags).ThenInclude(g => g.Tag).ToList();
+        return View(movies);
     }
 
     public IActionResult Privacy()

@@ -1,0 +1,25 @@
+@model GalloTube.Models.Video
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="album py-5">
+    <div class="text-center mb-3">
+        <h1>@Model.Name</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="@Model.Thumbnail" alt="@Model.Name" class="img-fluid">
+            </div>
+            <div class="col-md-9">
+                <p>Duração: @Model.HourDuration</p>
+                @foreach(VideoTag videoTag in Model.Tags)
+                {
+                    <span class="badge bg-secondary me-2">@videoTag.Tag.Name</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -27,7 +27,7 @@ public class AppDbSeed
             {
                Id = Guid.NewGuid().ToString(),
                Name = "Usuário",
-               NormalizedName = " USUÁRIO" 
+               NormalizedName = "USUÁRIO" 
             }
         };
         builder.Entity<IdentityRole>().HasData(roles);
